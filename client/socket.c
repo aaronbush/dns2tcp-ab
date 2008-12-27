@@ -125,7 +125,11 @@ socket_t		create_socket(t_conf *conf, struct sockaddr_in *sa)
       MYERROR("Gethostbyname \'%s\'",conf->dns_server);
       return (-1);
     }
-  sa->sin_port = htons(53);
+  if (conf->remote_port > 0) {
+  	sa->sin_port = htons(conf->remote_port);
+  } else {
+  	sa->sin_port = htons(53);
+  }
   memcpy(&sa->sin_addr.s_addr, hostent->h_addr, sizeof(sa->sin_addr.s_addr));
   sa->sin_family = AF_INET;
   if ((sd = socket(PF_INET, SOCK_DGRAM, 0)) < 0)

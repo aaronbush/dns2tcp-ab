@@ -42,6 +42,7 @@ static void	usage(char *name)
     "\t-r\t: ressource to access\n"
     "\t-f\t: configuration file\n"
     "\t-l\t: local port to bind (mandatory if ressource defined)\n"
+    "\t-p\t: remote port to connect to (defaults to 53)\n"
     "\tserver\t: DNS server to use (mandatory)\n"
     "\tIf no ressources are specified, available ressources will be printed\n",
     VERSION, name);
@@ -78,6 +79,8 @@ static int	client_copy_param(void *my_conf, char *token, char *value)
     {
       if (!strcmp(token, "local_port"))
 	return ((conf->local_port)? 0 : (conf->local_port = atoi(value)));
+      if (!strcmp(token, "remote_port"))
+	return ((conf->remote_port)? 0 : (conf->remote_port = atoi(value)));
       if (!strcmp(token, "compression"))
 	return ((conf->use_compression) ? 0 : (conf->use_compression = atoi(value)));
       if (!strcmp(token, "debug_level"))
@@ -114,7 +117,7 @@ int			get_option(int argc, char **argv, t_conf *conf)
   debug = 0;
   while (1)
     {
-      c = getopt (argc, argv, "chv:z:s:d:l:r:f:");
+      c = getopt (argc, argv, "chv:z:s:d:l:r:f:p:");
       if (c == -1)
 	  break;
       switch (c) {
@@ -137,6 +140,9 @@ int			get_option(int argc, char **argv, t_conf *conf)
 	break;
       case 'l':
 	  conf->local_port = atoi(optarg);
+	  break;
+      case 'p':
+	  conf->remote_port = atoi(optarg);
 	  break;
       case 'c':
 	conf->use_compression = 1;
