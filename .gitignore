@@ -1,0 +1,9 @@
+*.o
+Makefile
+client/dns2tcpc
+client/Makefile
+server/dns2tcpd
+server/Makefile
+config.h
+config.log
+config.status
