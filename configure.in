@@ -1,0 +1,26 @@
+# $Id: configure.in,v 1.12.2.4 2008/11/03 12:07:52 dembour Exp $
+
+AC_INIT(dns2tcp,0.4.3)
+AC_CONFIG_SRCDIR(client/main.c)
+AM_INIT_AUTOMAKE
+
+#AC_PROG_MAKE_SET(make)
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_CONFIG_HEADERS(config.h)
+
+AC_SUBST(AUTOMAKE)
+AC_SUBST(AUTOCONF)
+AC_SUBST(PACKAGE)
+AC_SUBST(VERSION)
+
+CFLAGS="$CFLAGS -Wall -Wunused "
+
+AC_C_BIGENDIAN
+AC_CHECK_HEADERS(sys/types.h)
+dnl If any socket libraries needed
+AC_SEARCH_LIBS(gethostent, nsl)
+AC_SEARCH_LIBS(setsockopt, socket)
+
+AC_OUTPUT(Makefile client/Makefile server/Makefile man/Makefile)
+

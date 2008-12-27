@@ -1,0 +1,90 @@
+.TH dns2tcpc 1
+
+.SH NAME 
+dns2tcpc \- A tunneling tool that encapsulate TCP connections in DNS.
+
+.SH SYNOPSIS 
+.B dns2tcpc 
+[
+.B \-h
+] [
+.B \-c
+] [
+.B \-z 
+.I domain zone
+] [
+.B \-d 
+.I debug_level
+] [
+.B \-r 
+.I ressource
+] [
+.B \-f 
+.I config_file
+] [
+.B \-l
+.I local_port
+] [ 
+.I server
+] 
+.br
+.ad
+
+.SH DESCRIPTION 
+dns2tcpc is a network tool used to encapsulate TCP communications in
+DNS. When connections are received on a specific port all TCP trafic are
+send to the remote dns2tcpd server and forwarded to a specific host and
+port. Multiple connections are supported. 
+.PP 
+dns2tcpc was written for demonstration purposes.
+.SH OPTIONS 
+.TP
+.BI -h
+Help Menu
+.TP
+.BI -c
+Use DNS compression. When used be sure that all relay and DNS server
+understand compression and really use it.
+.TP
+\fB\-z\fR \fBdomain zone\fR
+Use this domain as endpoint.
+.TP
+\fB\-d\fR \fBdebug level\fR
+Change debug level. Levels available are 1, 2 or 3.
+.TP
+\fB\-r\fR \fBressource\fR
+Remote ressource to access. 
+.TP
+\fB\-f\fR \fBconfig file\fR
+Configuration file to use
+.TP
+\fB\-l\fR \fBlocal_port\fR
+Local port that will received incomming connections.
+.TP
+\fBserver\fR
+DNS server to use.
+
+.SH CONFIGURATION FILES
+By default ${HOME}/.dns2tcprc is used if no configuration file is
+specified. Here is an example :
+.TP
+.nf
+.in 7
+domain = dns2tcp.hsc.fr
+ressource = ssltunnel
+local_port = 4430
+compression = 0
+debug_level = 1
+# DNS to use
+server = ns.hsc.fr
+.fi
+
+.SH AUTHORS
+Olivier Dembour <olivier.dembour@hsc.fr>
+
+.SH BUGS
+This tool is only a proof of concept
+
+.SH SEE ALSO
+ssltunnel 
+

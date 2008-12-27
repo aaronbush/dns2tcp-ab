@@ -1,0 +1,21 @@
+Version 0.4.3
+	Fix unsigned int pb and error in dns_decode (John Lampe)
+	Fix drop privileges problems (Solar Designer)
+	Add limit to prevent fork() (Idea from Solar Designer)
+
+Version 0.4.2
+	Suppressed
+	
+Version 0.4.1	
+	Fix buffer overflow in dns_decode
+	Fix bind Problem (thanks Taylor R Campbell)
+	Fix compilation problem in FreeBSD
+
+Version 0.4
+	Typo fixed in README, manpages
+	64 bits architectures now working
+	Fix bind on 0.0.0.0 in server
+	client more reliable
+
+Version 0.3
+	public release
