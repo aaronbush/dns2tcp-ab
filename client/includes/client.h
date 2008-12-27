@@ -40,6 +40,7 @@
 
 typedef struct		s_conf {
   uint16_t		local_port;
+  uint16_t		remote_port;
   socket_t		sd_udp;
   socket_t		sd_tcp;
   uint16_t		id;
