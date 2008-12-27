@@ -7,3 +7,6 @@ server/Makefile
 config.h
 config.log
 config.status
+stamp-h1
+client/.deps/
+server/.deps/
